@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     GEMINI_API_KEY: str
 
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
+    CORS_ORIGINS: List[str] = ["https://smart-goal-breaker-nine.vercel.app"]
 
     DATABASE_URL: Optional[str] = None
     SECRET_KEY: Optional[str] = None

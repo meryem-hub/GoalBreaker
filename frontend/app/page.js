@@ -42,7 +42,7 @@ export default function SmartGoalBreaker() {
       setGoalText('');
       setExpandedTask(null);
     } catch (err) {
-      setError('Failed to process goal. Please make sure the backend is running on port 8000.');
+ setError('Failed to process goal. Please try again.');
       console.error('API Error:', err);
     } finally {
       setIsLoading(false);
