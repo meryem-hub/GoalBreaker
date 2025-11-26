@@ -10,6 +10,7 @@ import { Brain, Zap, TrendingUp, Target, Heart, ChevronDown, ChevronUp } from 'l
 import { goalAPI } from '@/lib/api';
 
 export default function SmartGoalBreaker() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [goalText, setGoalText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [currentGoal, setCurrentGoal] = useState(null);
@@ -62,35 +63,82 @@ export default function SmartGoalBreaker() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-950 via-green-950 to-emerald-900 overflow-hidden">
       {/* Header/Navbar */}
-      <header className="border-b border-green-800/30 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center font-bold text-green-950 text-lg">
-                SGB
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-yellow-200">Smart Goal Breaker</h1>
-                <p className="text-yellow-200/60 text-xs">AI-Powered Goal Decomposition</p>
-              </div>
+       <header className="border-b border-green-800/30 backdrop-blur-sm">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center font-bold text-green-950 text-lg">
+              SGB
             </div>
+            <div>
+              <h1 className="text-xl font-bold text-yellow-200">Smart Goal Breaker</h1>
+              <p className="text-yellow-200/60 text-xs">AI-Powered Goal Decomposition</p>
+            </div>
+          </div>
 
-            {/* Navigation */}
-            <nav className="flex items-center gap-6">
-              <button className="text-yellow-200/80 hover:text-yellow-300 text-sm font-medium transition-colors">
-                Features
-              </button>
-              <button className="text-yellow-200/80 hover:text-yellow-300 text-sm font-medium transition-colors">
-                How It Works
-              </button>
-              <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
-                Beta
-              </Badge>
-            </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
+            <button className="text-yellow-200/80 hover:text-yellow-300 text-sm font-medium transition-colors">
+              Features
+            </button>
+            <button className="text-yellow-200/80 hover:text-yellow-300 text-sm font-medium transition-colors">
+              How It Works
+            </button>
+            <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
+              Beta
+            </Badge>
+          </nav>
+
+          {/* Mobile Hamburger Menu */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 text-yellow-200 hover:text-yellow-300 transition-colors"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
-      </header>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-green-800/30 pt-4">
+            <div className="flex flex-col gap-4">
+              <button 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-yellow-200/80 hover:text-yellow-300 text-sm font-medium transition-colors text-left py-2"
+              >
+                Features
+              </button>
+              <button 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-yellow-200/80 hover:text-yellow-300 text-sm font-medium transition-colors text-left py-2"
+              >
+                How It Works
+              </button>
+              <div className="pt-2">
+                <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
+                  Beta
+                </Badge>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </header>
+
 
       <div className="container mx-auto px-4 py-8">
         {/* Hero Section */}
