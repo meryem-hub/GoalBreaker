@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://goalbreaker-2.onrender.com';
+const API_BASE_URL = 'https://goalbreaker-2-x8yy.onrender.com/api/v1';
 
 export const goalAPI = {
   async createGoal(goalText) {
