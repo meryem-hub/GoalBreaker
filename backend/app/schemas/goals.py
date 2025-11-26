@@ -1,11 +1,10 @@
-# app/schemas/goals.py
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
 
 class TaskBase(BaseModel):
     step_number: int = Field(..., ge=1, le=5, description="Step number between 1-5")
-    # Remove max_length or set it high to allow AI-generated text
+    task_title: str = Field(..., min_length=3, description="Title of the task")  # ADD THIS
     task_description: str = Field(..., min_length=5, description="Detailed description of the task")
     complexity_score: int = Field(..., ge=1, le=10, description="Complexity score between 1-10")
 

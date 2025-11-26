@@ -7,6 +7,7 @@ load_dotenv()
 
 from app.core.config import settings
 from app.db.database import engine, Base
+from app.db.models import Goal, Task
 
 # Create tables first
 Base.metadata.create_all(bind=engine)
@@ -17,12 +18,12 @@ app = FastAPI(
     docs_url="/docs"
 )
 
-# CORS
+# CORS - ADD allow_methods
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["*"],  # ADD THIS LINE
     allow_headers=["*"],
 )
 

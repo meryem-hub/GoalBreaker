@@ -1,4 +1,3 @@
-# app/db/models.py
 from sqlalchemy import Column, String, Text, Float, Integer, DateTime, ForeignKey
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
@@ -24,6 +23,7 @@ class Task(Base):
 
     id = Column(String, primary_key=True, default=generate_uuid)
     goal_id = Column(String, ForeignKey("goals.id", ondelete="CASCADE"), nullable=False)
+    task_title = Column(String, nullable=False) 
     task_description = Column(Text, nullable=False)
     step_number = Column(Integer, nullable=False)
     complexity_score = Column(Integer, nullable=False)

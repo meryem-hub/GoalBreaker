@@ -35,6 +35,10 @@ class AIService:
         Each task must include numbers, measurable targets, tools or strategies.
         Avoid vague advice like 'research', 'learn more', or 'try to'.
 
+        FORMAT EACH TASK WITH:
+        - A clear TITLE (3-7 words summarizing the main action)
+        - A detailed DESCRIPTION (specific steps, numbers, timelines)
+
         Rate overall complexity from 1.0 to 10.0 based on effort, planning,
         time, domain-specific difficulty, and discipline required.
 
@@ -43,7 +47,12 @@ class AIService:
         {{
             "complexity_score": float,
             "tasks": [
-                {{"step_number": int, "task_description": "string", "complexity_score": int}}
+                {{
+                    "step_number": int, 
+                    "task_title": "string (clear 3-7 word title)",
+                    "task_description": "string (detailed description with numbers and specifics)", 
+                    "complexity_score": int
+                }}
             ]
         }}
 
@@ -75,7 +84,7 @@ class AIService:
                 raise ValueError("AI returned JSON with wrong structure or wrong number of tasks")
 
             for task in data["tasks"]:
-                if not all(k in task for k in ("step_number", "task_description", "complexity_score")):
+                if not all(k in task for k in ("step_number", "task_title", "task_description", "complexity_score")):
                     raise ValueError(f"Task missing required fields: {task}")
 
             logger.info("🚀 Successfully generated structured task breakdown")
