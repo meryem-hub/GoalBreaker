@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings
+from pydantic import BaseSettings
 from typing import Optional
 
 class Settings(BaseSettings):
@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     # CORS
     CORS_ORIGINS: list = ["http://localhost:3000", "http://127.0.0.1:3000"]
     
-    # Optional fields (won't cause errors if present in .env)
+    # Optional fields
     DATABASE_URL: Optional[str] = None
     SECRET_KEY: Optional[str] = None
     LOG_LEVEL: Optional[str] = None
@@ -20,6 +20,6 @@ class Settings(BaseSettings):
     class Config:
         case_sensitive = True
         env_file = ".env"
-        extra = "ignore"  # This ignores extra fields in .env
+        extra = "ignore"
 
 settings = Settings()
