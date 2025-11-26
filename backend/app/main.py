@@ -21,9 +21,14 @@ app = FastAPI(
 # CORS - ADD allow_methods
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=[
+        "https://goal-breaker-nine.vercel.app",   
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://goal-breaker-nine.vercel.app/", 
+    ],
     allow_credentials=True,
-    allow_methods=["*"],  # ADD THIS LINE
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
