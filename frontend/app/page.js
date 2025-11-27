@@ -325,7 +325,7 @@ export default function SmartGoalBreaker() {
               {[
                 { icon: Brain, title: "AI Powered", desc: "Advanced goal analysis algorithms" },
                 { icon: Zap, title: "Lightning Fast", desc: "Instant actionable breakdowns" },
-                { icon: TrendingUp, title: "Results Driven", desc: "Trackable success metrics" }
+                { icon: TrendingUp, title: "Complexity Awareness", desc: "Each step comes with challenge level and priority" }
               ].map((feature, index) => (
                 <Card key={index} className="bg-green-900/20 border-green-700/30 backdrop-blur-sm text-center hover:border-yellow-500/30 transition-colors">
                   <CardContent className="pt-6">

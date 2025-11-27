@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Smart Goal Breaker",
-  description: "Break big goals into smart, clear and achievable micro steps. Plan, track and achieve with AI-powered clarity.",
+  description: "Break big goals into smart, clear and achievable micro steps.",
 };
 
 
